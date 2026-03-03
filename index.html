@@ -1,138 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech-Mate Support</title>
-  <link rel="icon" href="Tech-Mate Support_files/logo.png" type="image/png">
-  <link rel="stylesheet" href="Tech-Mate Support_files/styles.css">
-  <script src="Tech-Mate Support_files/script.js" defer></script>
+<meta charset="UTF-8">
+<title>Tech-Mate | WiFi & IT Services in Simcoe & Niagara</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tech-Mate provides professional WiFi optimization, Ethernet installation and PC repair in Simcoe County and Niagara Peninsula, Ontario.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary:#0b0f8a;
+    --accent:#1e3aff;
+    --light:#f8f9fc;
+    --dark:#111827;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:var(--light);
+    color:#1f2937;
+}
+
+header{
+    background:white;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 15px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo img{
+    height:50px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#1f2937;
+    margin-left:30px;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:var(--primary);
+}
+
+.hero{
+    position:relative;
+    height:90vh;
+    background:url('https://images.unsplash.com/photo-1593642634367-d91a135587b5?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:750px;
+}
+
+.hero h1{
+    font-size:44px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 32px;
+    background:var(--primary);
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:var(--accent);
+}
+
+section{
+    padding:90px 8%;
+}
+
+h2{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:60px;
+    color:var(--primary);
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:var(--primary);
+}
+
+.cta{
+    background:var(--primary);
+    color:white;
+    text-align:center;
+}
+
+.cta h2{
+    color:white;
+}
+
+footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer img{
+    height:45px;
+    margin-bottom:15px;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:28px;
+    }
+}
+</style>
 </head>
 <body>
-  <div class="site-wrapper">
-    <!-- Header -->
-    <header class="site-header">
-      <a href="index.html" class="logo">
-        <img src="Tech-Mate Support_files/tech-mate.png" alt="Tech-Mate Logo">
-      </a>
-      <nav class="nav">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1>Your Personal <span class="highlight">IT Department</span></h1>
-      <p>Expert tech support right at your doorstep. From boosting WiFi speeds to fixing PC issues, we make technology work for you.</p>
-      <a href="#contact" class="btn-primary">Get Help Now</a>
-      <a href="#services" class="btn-secondary">View Services</a>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="services">
-      <h2>Our Services</h2>
-      <div class="service-cards">
-        <div class="card">
-          <h3>Home WiFi Optimization</h3>
-          <p>Eliminate dead zones and buffering. We configure your network for maximum coverage.</p>
-          <ul>
-            <li>Router placement analysis</li>
-            <li>Mesh network setup</li>
-            <li>Interference reduction</li>
-            <li>Speed testing</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Network Cabling</h3>
-          <p>Professional ethernet installation for home offices, gaming, and smart TVs.</p>
-          <ul>
-            <li>Cat6/Cat6a installation</li>
-            <li>Hidden wire routing</li>
-            <li>Wall jack installation</li>
-            <li>Network switch setup</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>PC Troubleshooting</h3>
-          <p>Diagnose and fix hardware and software issues quickly.</p>
-          <ul>
-            <li>Virus & malware removal</li>
-            <li>Hardware upgrades</li>
-            <li>OS reinstallation</li>
-            <li>Data recovery & backup</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-    <div class="max-w-6xl mx-auto my-16 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
-    <!-- Sidebar / Contact Info -->
-    <div class="max-w-6xl mx-auto my-16 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
-  <!-- Sidebar / Contact Info -->
-  <div class="lg:w-1/3 bg-blue-600 text-white p-10 flex flex-col justify-center">
-    <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
-    <p class="mb-6">Have a tech issue? Fill out the form and we'll get back to you quickly.</p>
-    <div class="space-y-3 text-sm">
-      <div><strong>Email:</strong> info@tech-mate.ca</div>
-      
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Tech-Mate Logo">
     </div>
-  </div>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-  <!-- Form -->
-  <div class="lg:w-2/3 p-10">
-    <form action="https://formsubmit.co/info@tech-mate.ca" method="POST" class="space-y-6">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div class="space-y-2">
-          <label for="firstName" class="text-sm font-medium text-slate-700">First Name</label>
-          <input type="text" id="firstName" name="firstName" required placeholder="John" class="w-full h-10 px-3 py-1 border rounded-md text-base focus:ring-1 focus:ring-blue-600 focus:outline-none">
+<section class="hero">
+    <div class="hero-content">
+        <h1>Professional Home WiFi & IT Support</h1>
+        <p>Serving Simcoe County & Niagara Peninsula, Ontario</p>
+        <a href="tel:7052298493" class="btn">Call Now</a>
+    </div>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=80">
+            <div class="card-content">
+                <h3>WiFi Optimization</h3>
+                <p>Eliminate dead zones and dramatically improve internet speed throughout your home.</p>
+            </div>
         </div>
-        <div class="space-y-2">
-          <label for="lastName" class="text-sm font-medium text-slate-700">Last Name</label>
-          <input type="text" id="lastName" name="lastName" required placeholder="Doe" class="w-full h-10 px-3 py-1 border rounded-md text-base focus:ring-1 focus:ring-blue-600 focus:outline-none">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80">
+            <div class="card-content">
+                <h3>Ethernet Installation</h3>
+                <p>Clean, professional network cabling for gaming setups, home offices and smart TVs.</p>
+            </div>
         </div>
-      </div>
 
-      <div class="space-y-2">
-        <label for="email" class="text-sm font-medium text-slate-700">Email Address</label>
-        <input type="email" id="email" name="email" required placeholder="john@example.com" class="w-full h-10 px-3 py-1 border rounded-md text-base focus:ring-1 focus:ring-blue-600 focus:outline-none">
-      </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80">
+            <div class="card-content">
+                <h3>PC & Laptop Repair</h3>
+                <p>Virus removal, system cleanup, hardware upgrades and troubleshooting services.</p>
+            </div>
+        </div>
 
-      <div class="space-y-2">
-        <label for="service" class="text-sm font-medium text-slate-700">Service Needed</label>
-        <select id="service" name="service" class="w-full h-10 px-3 py-1 border rounded-md text-base focus:ring-1 focus:ring-blue-600 focus:outline-none">
-          <option value="">Select a service...</option>
-          <option value="wifi">Home WiFi Optimization</option>
-          <option value="cabling">Network Cabling</option>
-          <option value="pc">PC Troubleshooting</option>
-          <option value="other">Other / Not Sure</option>
-        </select>
-      </div>
+    </div>
+</section>
 
-      <div class="space-y-2">
-        <label for="message" class="text-sm font-medium text-slate-700">Message</label>
-        <textarea id="message" name="message" required placeholder="Tell us a bit about the issue you're experiencing..." class="w-full px-3 py-2 h-32 border rounded-md text-base focus:ring-1 focus:ring-blue-600 focus:outline-none"></textarea>
-      </div>
+<section id="contact" class="cta">
+    <h2>Need Reliable Tech Support?</h2>
+    <p style="margin-bottom:30px;">Call today for a free quote and fast service.</p>
+    <a href="mailto:info@tech-mate.ca" class="btn">Email Us</a>
+</section>
 
-      <!-- Formsubmit hidden field to prevent redirect -->
-      <input type="hidden" name="_captcha" value="false">
+<footer>
+    <img src="logo.png" alt="Tech-Mate Logo">
+    <p>© 2026 Tech-Mate | Simcoe County & Niagara Peninsula, Ontario</p>
+</footer>
 
-      <button type="submit" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition-transform hover:-translate-y-0.5">
-        Send Message
-      </button>
-    </form>
-  </div>
-</div>
-    </div>  
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p>© 2026 Tech-Mate.ca. All rights reserved.</p>
-    </footer>
-  </div>
 </body>
 </html>
