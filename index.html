@@ -73,18 +73,10 @@
       <p>Send us a message and we'll respond within 24 hours.</p>
       <form action="https://formsubmit.co/info@tech-mate.ca" method="POST" class="space-y-6">
         <div class="form-row">
-          <input type="text" name="First Name" placeholder="First Name" required>
-          <input type="text" name="Last Name" placeholder="Last Name" required>
+          <input type="text" name="name" required>
+          <input type="email" name="email" required>
+          <textarea name="message" required></textarea>
         </div>
-        <input type="email" name="Email" placeholder="Email Address" required>
-        <select name="Service Needed" required>
-          <option value="">Select a service...</option>
-          <option value="wifi">Home WiFi Optimization</option>
-          <option value="cabling">Network Cabling</option>
-          <option value="pc">PC Troubleshooting</option>
-          <option value="other">Other / Not Sure</option>
-        </select>
-        <textarea name="Message" placeholder="Tell us about your issue..." required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </section>
