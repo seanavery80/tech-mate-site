@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini Tech Tools | Tech-Mate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mini Tech Tools Dashboard – IP Lookup, Subnet Calculator, WiFi Tools, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary:#0b0f8a;
+    --accent:#1e3aff;
+    --light:#f8f9fc;
+    --dark:#111827;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:var(--light);
+    color:#1f2937;
+}
+
+header{
+    background:white;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 15px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo img{
+    height:50px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#1f2937;
+    margin-left:30px;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:var(--primary);
+}
+
+main{
+    padding:60px 8%;
+}
+
+h2{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:40px;
+    color:var(--primary);
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+section.tool{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    transition:0.3s;
+}
+
+section.tool:hover{
+    transform:translateY(-4px);
+}
+
+section.tool h2{
+    font-size:22px;
+    text-align:left;
+    margin-bottom:15px;
+}
+
+section.tool input, section.tool button{
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+section.tool button{
+    background:var(--primary);
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+section.tool button:hover{
+    background:var(--accent);
+}
+
+pre{
+    background:#eee;
+    padding:10px;
+    border-radius:6px;
+    overflow-x:auto;
+    margin-top:8px;
+    font-size:14px;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Tech-Mate Logo">
+    </div>
+    <nav>
+        <a href="index.html">⬅ Back to Home</a>
+    </nav>
+</header>
+
+<main>
+<h2>Mini Tech Tools Dashboard</h2>
+<div class="dashboard">
+
+    <!-- IP Lookup -->
+    <section class="tool" id="ip-lookup">
+        <h2>IP Lookup</h2>
+        <input type="text" id="ipInput" placeholder="Enter IP address">
+        <button onclick="lookupIP()">Lookup</button>
+        <pre id="ipResult"></pre>
+    </section>
+
+    <!-- Subnet Calculator -->
+    <section class="tool" id="subnet-calculator">
+        <h2>Subnet Calculator</h2>
+        <input type="text" id="subnetInput" placeholder="Enter IP/Prefix (e.g., 192.168.1.0/24)">
+        <button onclick="calculateSubnet()">Calculate</button>
+        <pre id="subnetResult"></pre>
+    </section>
+
+    <!-- Port Reference -->
+    <section class="tool" id="port-reference">
+        <h2>Port Reference</h2>
+        <input type="number" id="portInput" placeholder="Enter port number">
+        <button onclick="lookupPort()">Lookup</button>
+        <pre id="portResult"></pre>
+    </section>
+
+    <!-- RJ45 Wiring -->
+    <section class="tool" id="rj45">
+        <h2>RJ45 Wiring</h2>
+        <pre id="rj45Result">T568A / T568B wiring reference here</pre>
+    </section>
+
+    <!-- dBm to mW -->
+    <section class="tool" id="dbm-to-mw">
+        <h2>dBm → mW</h2>
+        <input type="number" id="dbmInput" placeholder="Enter dBm">
+        <button onclick="convertDbm()">Convert</button>
+        <pre id="dbmResult"></pre>
+    </section>
+
+    <!-- Binary Calculator -->
+    <section class="tool" id="binary-calculator">
+        <h2>Binary Calculator</h2>
+        <input type="number" id="binaryInput" placeholder="Enter decimal">
+        <button onclick="toBinary()">Convert</button>
+        <pre id="binaryResult"></pre>
+    </section>
+
+    <!-- CIDR → Mask -->
+    <section class="tool" id="cidr-to-mask">
+        <h2>CIDR → Subnet Mask</h2>
+        <input type="number" id="cidrInput" placeholder="Enter CIDR (e.g., 24)">
+        <button onclick="cidrToMask()">Convert</button>
+        <pre id="cidrResult"></pre>
+    </section>
+
+    <!-- WiFi Channel Chart -->
+    <section class="tool" id="wifi-chart">
+        <h2>WiFi Channel Chart</h2>
+        <canvas id="wifiCanvas" width="400" height="200"></canvas>
+    </section>
+
+    <!-- Ping Test -->
+    <section class="tool" id="ping-test">
+        <h2>Ping Test</h2>
+        <input type="text" id="pingInput" placeholder="Enter domain or IP">
+        <button onclick="pingTest()">Ping</button>
+        <pre id="pingResult"></pre>
+    </section>
+
+    <!-- Traceroute -->
+    <section class="tool" id="traceroute">
+        <h2>Traceroute</h2>
+        <input type="text" id="traceInput" placeholder="Enter domain or IP">
+        <button onclick="tracerouteTest()">Trace</button>
+        <pre id="traceResult"></pre>
+    </section>
+
+</div>
+</main>
+
+<footer>
+    <img src="logo.png" alt="Tech-Mate Logo">
+    <p>© 2026 Tech-Mate | Simcoe County & Niagara Peninsula, Ontario</p>
+</footer>
+
+<script src="scripts/ip-lookup.js"></script>
+<script src="scripts/subnet-calculator.js"></script>
+<script src="scripts/port-reference.js"></script>
+<script src="scripts/rj45.js"></script>
+<script src="scripts/dbm-to-mw.js"></script>
+<script src="scripts/binary-calculator.js"></script>
+<script src="scripts/cidr-to-mask.js"></script>
+<script src="scripts/wifi-channel-chart.js"></script>
+<script src="scripts/ping-test.js"></script>
+<script src="scripts/traceroute.js"></script>
+
+</body>
+</html>
