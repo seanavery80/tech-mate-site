@@ -1,14 +1,13 @@
-async function runTraceroute() {
+async function tracerouteTest(){
 
     const host = document.getElementById("traceInput").value;
 
     const response = await fetch(
-        `https://techmate-tools-api-vercel.vercel.app/api/traceroute?host=${host}`
+        `https://api.hackertarget.com/mtr/?q=${host}`
     );
 
-    const data = await response.json();
+    const data = await response.text();
 
-    document.getElementById("traceResult").textContent =
-        data.output || data.error;
+    document.getElementById("traceResult").textContent = data;
 
 }
