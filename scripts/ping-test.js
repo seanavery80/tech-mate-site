@@ -1,20 +1,14 @@
-async function pingTest() {
-    const host = document.getElementById('pingInput').value.trim();
-    const out = document.getElementById('pingResult');
+async function runPing() {
 
-    if (!host) {
-        out.textContent = "Enter a domain or IP!";
-        return;
-    }
+    const host = document.getElementById("pingInput").value;
 
-    out.textContent = "Pinging…";
+    const response = await fetch(
+        `https://techmate-tools-api-vercel.vercel.app/api/ping?host=${host}`
+    );
 
-    try {
-        const response = await fetch(`https://api.allorigins.win/raw?url=https://api.hackertarget.com/nping/?q=${host}`);
-        const data = await response.text();
-        out.textContent = data;
-    } catch (err) {
-        out.textContent = "Ping failed.";
-        console.error(err);
-    }
+    const data = await response.json();
+
+    document.getElementById("pingResult").textContent =
+        data.output || data.error;
+
 }
