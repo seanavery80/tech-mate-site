@@ -1,14 +1,25 @@
-async function runPing() {
+async function pingTest() {
 
     const host = document.getElementById("pingInput").value;
 
-    const response = await fetch(
-        `https://techmate-tools-api-vercel.vercel.app/api/ping?host=${host}`
-    );
+    const start = Date.now();
 
-    const data = await response.json();
+    try{
 
-    document.getElementById("pingResult").textContent =
-        data.output || data.error;
+        await fetch(`https://${host}`, {
+            mode: "no-cors"
+        });
+
+        const latency = Date.now() - start;
+
+        document.getElementById("pingResult").textContent =
+            "Latency: " + latency + " ms";
+
+    }catch(e){
+
+        document.getElementById("pingResult").textContent =
+            "Host reachable but blocked by CORS.";
+
+    }
 
 }
