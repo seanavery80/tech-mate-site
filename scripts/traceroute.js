@@ -1,13 +1,13 @@
 async function tracerouteTest(){
 
-    const host = document.getElementById("traceInput").value;
+const host = document.getElementById("traceInput").value;
 
-    const response = await fetch(
-        `https://api.hackertarget.com/mtr/?q=${host}`
-    );
+const url = `https://api.allorigins.win/raw?url=https://api.hackertarget.com/mtr/?q=${host}`;
 
-    const data = await response.text();
+const response = await fetch(url);
 
-    document.getElementById("traceResult").textContent = data;
+const data = await response.text();
+
+document.getElementById("traceResult").textContent = data;
 
 }
