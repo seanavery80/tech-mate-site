@@ -2,12 +2,27 @@ async function tracerouteTest(){
 
 const host = document.getElementById("traceInput").value;
 
-const url = `https://api.allorigins.win/raw?url=https://api.hackertarget.com/mtr/?q=${host}`;
+try{
 
-const response = await fetch(url);
+const response = await fetch(
+`https://tools.keycdn.com/traceroute?host=${host}&format=json`
+);
 
-const data = await response.text();
+const data = await response.json();
 
-document.getElementById("traceResult").textContent = data;
+let output = "";
+
+data.data.trace.forEach(hop => {
+output += `${hop.hop}. ${hop.ip || "*"} (${hop.rtt || "timeout"} ms)\n`;
+});
+
+document.getElementById("traceResult").textContent = output;
+
+}catch(err){
+
+document.getElementById("traceResult").textContent =
+"Traceroute failed. API may be blocked.";
+
+}
 
 }
